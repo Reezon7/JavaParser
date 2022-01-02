@@ -23,7 +23,7 @@ public class ControllerApp {
     }
 
     @PostMapping("/home")
-    public String getResult(Model model, @RequestParam String url) throws IOException {
+    public String getResult(Model model, @RequestParam("url") String url) throws IOException {
         serviceApp.analyzeUrl(url);
         return "home";
     }
