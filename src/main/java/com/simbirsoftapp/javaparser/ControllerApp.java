@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ControllerApp {
@@ -24,7 +25,8 @@ public class ControllerApp {
 
     @PostMapping("/home")
     public String getResult(Model model, @RequestParam("url") String url) throws IOException {
-        serviceApp.analyzeUrl(url);
+        List<Statistic> resultListOfWords = serviceApp.analyzeUrl(url);
+        model.addAttribute("statistic",resultListOfWords);
         return "home";
     }
 

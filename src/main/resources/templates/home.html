@@ -7,27 +7,48 @@
 <body>
 <main class="p-5 mb-4 bg-light rounded-3">
     <div class="row g-5">
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <span class="fs-4">Парсинг с Java</span>
-            </a>
+        <div class="col-md-6">
+            <h1>Java-парсер на основе Spring</h1>
+            <hr class="my-4">
+            <form action="#"  th:action="@{/home}"  method="post">
+                <div class="col-12">
+                    <label for="url" class="form-label">Введите URL:</label>
+                    <input type="text" th:name="url" class="form-control" id="url" size="50" placeholder="https://www.simbirsoft.com/" required="">
+                    <div class="invalid-feedback">
+                        Пожалуйста, введите URL.
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="col-12">
+                    <input type="submit" value="Анализировать" style="height:50px;width:200px" class="btn btn-primary btn-lg px-4 gap-3">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h1>Результат</h1>
+            <hr class="my-4">
+            <div class="row mb-7">
 
-        </header>
-    </div>
-    <form action="#"  th:action="@{/home}"  method="post">
-        <div class="col-12">
-            <label for="url" class="form-label">Введите URL:</label>
-            <input type="text" th:name="url" class="form-control" id="url" size="50" placeholder="https://www.simbirsoft.com/" required="">
-            <div class="invalid-feedback">
-                Пожалуйста, введите URL.
+                <table>
+                    <tr>
+                        <div class="col-2 themed-grid-col">
+                            <th>Word</th>
+                        </div>
+                        <div class="col-2 themed-grid-col">
+                            <th>Count</th>
+                        </div>
+                    </tr>
+                    <tr th:each="stat : ${statistic}">
+                        <div class="col-2 themed-grid-col">
+                            <td th:text="${stat.word}"></td>
+                        </div>
+                        <div class="col-2 themed-grid-col">
+                            <td th:text="${stat.count}"></td>
+                        </div>
+                    </tr>
+                </table>
             </div>
         </div>
-        <hr class="my-4">
-        <div class="col-12">
-            <input type="submit" value="Анализировать" style="height:50px;width:200px" class="btn btn-primary btn-lg px-4 gap-3">
-        </div>
-    </form>
     </div>
 </main>
 </body>
