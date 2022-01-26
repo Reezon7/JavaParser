@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 @Service
@@ -43,9 +44,13 @@ public class ServiceApp {
                 countOfWords.put(s, countOfWords.get(s) + 1);
             }
             //save to the database
+            Stream<Map.Entry<String , Integer>> stream = countOfWords.entrySet().stream();
+            stream.forEach((e) -> statisticRepository.save(new Statistic(url, e.getKey(), e.getValue())));
+            /*
             for (Map.Entry<String, Integer> entry : countOfWords.entrySet()) {
                 statisticRepository.save(new Statistic(url, entry.getKey(), entry.getValue()));
             }
+            */
         }
         catch (Exception e){
             log.error(e.getMessage());
