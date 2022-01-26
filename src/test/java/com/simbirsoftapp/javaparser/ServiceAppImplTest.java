@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class ServiceAppTest {
+class ServiceAppImplTest {
 
     @MockBean
     private StatisticRepository statisticRepository;

@@ -14,7 +14,7 @@ import java.util.List;
 public class ControllerApp {
 
     @Autowired
-    public ServiceApp serviceApp;
+    public ServiceAppImpl serviceAppImpl;
 
     @GetMapping("/home")
     public String home(Model model){
@@ -24,7 +24,7 @@ public class ControllerApp {
 
     @PostMapping("/home")
     public String getResult(Model model, @RequestParam("url") String url) throws IOException {
-        List<Statistic> resultListOfWords = serviceApp.analyzeUrl(url);
+        List<Statistic> resultListOfWords = serviceAppImpl.analyzeUrl(url);
         model.addAttribute("statistic",resultListOfWords);
         return "home";
     }
