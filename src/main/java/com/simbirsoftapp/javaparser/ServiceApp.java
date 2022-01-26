@@ -34,6 +34,7 @@ public class ServiceApp {
             //splitting text into words using a regular expression
             String regex2 = "([^a-zA-Zа-яА-Я']+)'*\\1*";
             String regex = "[^а-яА-Яa-zA-Z]+";
+            String regex3 = "[,.!?\";:\\[\\]\\(\\)\\n\\r\\t ]+";
             String[] split = content.split(regex);
             Map<String, Integer> countOfWords = new HashMap<>();
             //counting words
